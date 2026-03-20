@@ -65,8 +65,8 @@ const styles = `
   }
   .hero-content { position: relative; z-index: 1; max-width: 800px; }
   .hero-logo {
-    width: clamp(60px, 8vw, 90px);
-    margin-bottom: 2rem;
+    width: clamp(200px, 15vw, 200px);
+    margin-bottom: 0.1rem;
     animation: float 6s ease-in-out infinite;
     filter: drop-shadow(0 0 40px rgba(255,255,255,0.1));
   }
@@ -372,7 +372,7 @@ const styles = `
     transition: color 0.2s;
   }
   .contact-card-val:hover { color: rgba(240,240,240,0.8); }
-  .contact-form-card { padding: 2.5rem; }
+  .contact-form-card { padding: 2rem; }
   .form-group { margin-bottom: 1.25rem; }
   .form-group label {
     display: block;
@@ -444,6 +444,11 @@ const styles = `
   .footer-right {
     font-size: 0.75rem; color: rgba(240,240,240,0.2);
     font-family: 'DM Sans', sans-serif;
+  }
+  .footer-logo {
+    width: 500px;        /* 👈 increase this to whatever size you want */
+    height: auto;        /* keeps aspect ratio intact */
+    animation: float 6s ease-in-out infinite;
   }
 
   /* FADE IN ANIMATION */
@@ -705,11 +710,10 @@ function Contact() {
         <div ref={r2} className="fade-up contact-grid">
           <div className="contact-info">
             {[
-              { icon: '📧', title: 'Email', val: 'josiahjohngreen@gmail.com', href: 'mailto:josiahjohngreen@gmail.com' },
-              { icon: '🌐', title: 'Website', val: 'freshja.com', href: 'https://freshja.com' },
+              { icon: '📧', title: 'Email', val: 'john@3urek4.com', href: 'mailto:john@3urek4.com' },
               { icon: '📱', title: 'Phone', val: '+1 (876) 208-2517', href: 'tel:+18762082517' },
               { icon: '📸', title: 'Instagram', val: '@3ur.k4', href: 'https://instagram.com/3ur.k4' },
-              { icon: '💼', title: 'LinkedIn', val: 'Josiah-John Green', href: 'https://linkedin.com/in/josiah-john-green' },
+              { icon: '💼', title: 'LinkedIn', val: '3urek4', href: 'https://www.linkedin.com/company/111900012/admin/dashboard/' },
             ].map((c, i) => (
               <div key={i} className="glass-card contact-card">
                 <div className="contact-icon">{c.icon}</div>
@@ -758,7 +762,7 @@ function Footer() {
   return (
     <footer>
       <div className="footer-left">
-        <img src={logo} alt="3urek4" />
+        <img src={logo} alt="3urek4" className="footer-logo" />
         <span>3UREK4</span>
       </div>
       <p className="footer-pledge">
