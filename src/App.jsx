@@ -560,6 +560,7 @@ function About() {
               a commitment to advancing the welfare of the whole human race. We design technology that addresses 
               real problems faced by everyday people, starting in the Caribbean and scaling outward.
             </p>
+
             <p>
               Founded by four University of the West Indies graduates, our team combines deep technical expertise 
               with on-the-ground community knowledge. We don't adapt foreign models to Jamaica — we build from 
@@ -567,17 +568,19 @@ function About() {
             </p>
           </div>
 
-          {[
-            { icon: '🧠', title: 'Technology First', body: 'Every solution is built around real Caribbean constraints — connectivity, affordability, and access — not repurposed from elsewhere.' },
-            { icon: '🌍', title: 'Impact Driven', body: 'Every product must measurably improve lives. A farmer\'s income. A consumer\'s access to food. A community\'s resilience.' },
-            { icon: '🚀', title: 'Caribbean to Global', body: 'We start at home — Jamaica first, then the Caribbean — but our vision extends to the whole human race.' },
-          ].map((p, i) => (
-            <div key={i} className="glass-card about-pillar fade-up" ref={i === 0 ? r3 : undefined}>
-              <span className="pillar-icon">{p.icon}</span>
-              <div className="pillar-title">{p.title}</div>
-              <div className="pillar-body">{p.body}</div>
-            </div>
-          ))}
+          <div ref={r3} className="fade-up" style={{ display: 'contents' }}>
+            {[
+              { icon: '🧠', title: 'Technology First', body: 'Every solution is built around real Caribbean constraints — connectivity, affordability, and access — not repurposed from elsewhere.' },
+              { icon: '🌍', title: 'Impact Driven', body: 'Every product must measurably improve lives. A farmer\'s income. A consumer\'s access to food. A community\'s resilience.' },
+              { icon: '🚀', title: 'Caribbean to Global', body: 'We start at home — Jamaica first, then the Caribbean — but our vision extends to the whole human race.' },
+            ].map((p, i) => (
+              <div key={i} className="glass-card about-pillar">
+                <span className="pillar-icon">{p.icon}</span>
+                <div className="pillar-title">{p.title}</div>
+                <div className="pillar-body">{p.body}</div>
+              </div>
+            ))}
+          </div>
 
           <div className="about-stats">
             {[
@@ -673,8 +676,10 @@ function Products() {
           </p>
           <div className="coming-soon-grid">
             {[
-              { title: 'Scholar', desc: 'AI-powered scholarship matching platform for Caribbean students — connecting talent to opportunity across the region.' },
               { title: 'Mirri', desc: 'Mental health companion app for Caribbean youth featuring guided support, journaling, and a virtual companion.' },
+              { title: 'Medic', desc: 'A dual-purpose platform streamlining queue management in public medical institutions and patient management in private ones — reducing wait times, improving care coordination, and bringing efficiency to the Caribbean healthcare space.' },
+              { title: 'PeliPlan', desc: 'Campus navigation app for UWI students — find your classes, check schedules, see which lecturer is teaching where, and get turn-by-turn directions across campus, all in one place.' },
+/*            { title: 'Scholar', desc: 'AI-powered scholarship matching platform for Caribbean students — connecting talent to opportunity across the region.' }, */
               { title: 'TBA', desc: 'Every product starts with a real Caribbean problem. The next one is already in research.' },
             ].map((p, i) => (
               <div key={i} className="glass-card coming-card">
