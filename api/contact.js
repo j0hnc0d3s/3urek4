@@ -12,14 +12,14 @@ export default async function handler(req, res) {
       from: 'john@3urek4.com',
       to: email,
       replyTo: email,
-      cc: 'josiahjohngreen@gmail.com',
+      cc: ['john@3urek4.com', 'josiahjohngreen@gmail.com'],
       subject: `New message from ${name} — 3urek4 Website`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Message:</strong></p>
+      <p>${message}</p>
       `
     })
     res.status(200).json({ success: true })
