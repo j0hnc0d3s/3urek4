@@ -650,13 +650,13 @@ function Products() {
             <div className="traction-items">
               {[
                 { done: true, label: 'Google Play Console Registered' },
-                { done: true, label: 'freshja.com Domain Secured' },
                 { done: true, label: 'Market Research — Rural St. Andrew' },
                 { done: true, label: 'Prototype in User Testing' },
                 { done: true, label: 'JMMB CSR Recognition' },
                 { done: true, label: '🏆 2nd Place — Vincent Hosang Competition' },
                 { done: true, label: '🏆 Top Undergraduate Team' },
                 { done: true, label: '🏆 Corporate Responsibility Award' },
+                { done: false, label: 'freshja.com Domain Secured (Pending)' },
                 { done: false, label: 'Apple Developer Program (Pending)' },
                 { done: false, label: 'App Store Submission (Pending)' },
               ].map((t, i) => (
@@ -712,12 +712,25 @@ function Products() {
 function Contact() {
   const ref = useFadeUp()
   const r2 = useFadeUp()
+
   const [submitted, setSubmitted] = useState(false)
   const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [error, setError] = useState(null)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSubmitted(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+      if (!res.ok) throw new Error()
+      setSubmitted(true)
+    } catch {
+      setError('Something went wrong. Please try again.')
+    }
   }
 
   return (
@@ -769,6 +782,8 @@ function Contact() {
                   <textarea className="form-textarea" placeholder="Tell us about your idea, partnership, or inquiry..."
                     value={form.message} onChange={e => setForm({...form, message: e.target.value})} />
                 </div>
+                
+                {error && <p style={{ color: 'rgba(255,100,100,0.8)', fontSize: '0.8rem', marginBottom: '0.5rem' }}>{error}</p>}
                 <button type="submit" className="form-submit">Send Message</button>
               </form>
             )}
