@@ -603,6 +603,7 @@ function Products() {
   const ref = useFadeUp()
   const r2 = useFadeUp()
   const r3 = useFadeUp()
+  const [showModal, setShowModal] = useState(false) 
 
   return (
     <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
@@ -635,9 +636,11 @@ function Products() {
               <li>AI demand forecasting to reduce post-harvest waste</li>
               <li>Surplus produce channel to food banks & communities</li>
             </ul>
-            <a href="https://freshja.com" target="_blank" rel="noreferrer" className="btn-primary" style={{ display: 'inline-block' }}>
-              Visit freshja.com
-            </a>
+
+            <button className="btn-primary" style={{ display: 'inline-block' }} onClick={() => setShowModal(true)}>
+              Have a look
+            </button>
+
           </div>
           <div className="flagship-traction">
             <div className="traction-title">Traction</div>
@@ -684,6 +687,19 @@ function Products() {
         </div>
       </section>
       <div className="section-divider" style={{ maxWidth: '1200px', margin: '0 auto 0' }} />
+
+        {showModal && (
+          <div className="modal-overlay" onClick={() => setShowModal(false)}>
+            <div className="modal-box" onClick={e => e.stopPropagation()}>
+              <button className="modal-close" onClick={() => setShowModal(false)}>✕</button>
+              <iframe
+                src="https://drive.google.com/file/d/1ubVR-CotPoPkfa85PuhNACNO0nB3aZTd/preview"
+                allow="autoplay"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        )}
     </div>
   )
 }
